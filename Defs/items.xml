@@ -1,0 +1,114 @@
+<Defs>
+
+<!-- 温控核心 -->
+<ThingDef ParentName="BuildingBase">
+    <defName>LSTC_ThermalCore</defName>
+    <!-- 温控核心 -->
+    <label>LSTC_ThermalCore</label>
+    <!-- 超凡智能教导建设的先进温控设备，同时具有加热和制冷功能。使用玻璃钢作为额外热量载体，无需排气口。使用寿命长达70年 -->
+    <description>Advanced temperature control equipment guided by superintelligent design, capable of both heating and cooling. Uses fiberglass as an additional heat carrier, requiring no exhaust vent. Service life of up to 70 years.</description>
+    <thingClass>LSTC.Building_TC</thingClass>
+
+    <graphicData>
+      <texPath>ThermalCore</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shadowData>
+        <volume>(0.5,0.3,0.7)</volume>
+        <offset>(0,0,-0.15)</offset>
+      </shadowData>
+    </graphicData>
+
+    <!-- 允许移动 -->
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <!-- 渲染层 -->
+    <altitudeLayer>Building</altitudeLayer>
+    <!-- 通过性 -->
+    <passability>PassThroughOnly</passability>
+    <pathCost>30</pathCost>
+    <!-- 不可旋转 -->
+    <rotatable>false</rotatable>
+    <fillPercent>0.4</fillPercent>
+    
+    <!-- 存储分类 -->
+    <thingCategories>
+        <li>BuildingsTemperature</li>
+    </thingCategories>
+    <statBases>
+        <!-- 工作量 -->
+        <WorkToBuild>1600</WorkToBuild>
+        <!-- 生命值 -->
+        <MaxHitPoints>100</MaxHitPoints>
+        <!-- 质量 -->
+        <Mass>6</Mass>
+        <!-- 易燃性 -->
+        <Flammability>0.0</Flammability>
+    </statBases>    
+    <!-- 中等刷新频率 -->
+    <tickerType>Rare</tickerType>
+    <building>
+        <!-- 摧毁音效 -->
+        <destroySound>BuildingDestroyed_Metal_Small</destroySound>
+    </building>
+    <!-- 建造成本 500钢铁，10零部件，1高级零部件，100玻璃钢-->
+    <costList>
+        <Steel>500</Steel>
+        <Gold>10</Gold>
+        <Plasteel>100</Plasteel>
+        <ComponentIndustrial>10</ComponentIndustrial>
+        <ComponentSpacer>1</ComponentSpacer>
+    </costList>
+    <!-- 地形要求 -->
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <placeWorkers>
+        <li>PlaceWorker_Heater</li>
+    </placeWorkers>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+
+    <modExtensions>
+        <li Class="LSTC.Building_TC_ModExt">
+            <!-- 高功率进入阈值 -->
+            <HighPowerEnterDelta>5</HighPowerEnterDelta>
+            <!-- 高功率退出阈值 -->
+            <HighPowerExitDelta>0.5</HighPowerExitDelta>
+            <!-- 最大线性调控温差 -->
+            <MaxEffectiveDelta>30</MaxEffectiveDelta>
+            <!-- 线性倍数 -->
+            <ChangeRate>0.5</ChangeRate>
+            <!-- 最小调控温度 -->
+            <MinTempChange>1</MinTempChange>
+        </li>
+    </modExtensions>
+
+    <comps>
+        <!-- 电力组件 -->
+        <li Class="CompProperties_Power">
+            <compClass>CompPowerTrader</compClass>
+            <basePowerConsumption>200</basePowerConsumption>
+            <shortCircuitInRain>true</shortCircuitInRain>
+        </li>
+        <!-- 手动开关 -->
+        <li Class="CompProperties_Flickable"/>
+        <!-- 温控组件 -->
+        <li Class="CompProperties_TempControl">
+            <!-- 这个参数不会起作用，我没有使用原版控温机制 -->
+            <energyPerSecond>0</energyPerSecond>
+        </li>
+        <!-- 发光效果 -->
+        <li Class="CompProperties_Glower">
+            <glowRadius>3</glowRadius>
+            <glowColor>(255,150,100,0)</glowColor>
+        </li>
+    </comps>
+    <!-- 建造分类 -->
+    <designationCategory>Temperature</designationCategory>
+    <!-- 建造所需技能等级 -->
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+    <!-- 科技需求 -->
+    <researchPrerequisites>
+        <!-- 原版空调，不需要额外科技 -->
+        <li>AirConditioning</li>
+    </researchPrerequisites>
+
+</ThingDef>
+
+</Defs>

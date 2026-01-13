@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+<name>[LS]温控核心</name>
+<author>lsatter</author>
+
+<supportedVersions>
+    <li>1.6</li>
+</supportedVersions>
+
+<modDependencies>
+  <li>
+    <packageId>Ludeon.RimWorld</packageId>
+    <displayName>RimWorld</displayName>
+  </li>
+</modDependencies>
+
+<loadAfter>
+    <li>Ludeon.RimWorld</li>
+</loadAfter>
+	
+<packageId>lsatter.ThermalCore</packageId>
+
+<description>
+增加了三款温控设备，详细见README文件
+</description>
+
+</ModMetaData>
