@@ -5,7 +5,7 @@
     <defName>LSTC_ThermalCore</defName>
     <!-- 温控核心 -->
     <label>LSTC_ThermalCore</label>
-    <!-- 超凡智能教导建设的先进温控设备，同时具有加热和制冷功能。使用玻璃钢作为额外热量载体，无需排气口。使用寿命长达70年 -->
+    <!-- 超凡智能教导建设的先进温控设备，同时具有加热和制冷功能。使用玻璃钢作为额外热量载体，无需排气口。使用寿命长达70年。 -->
     <description>Advanced temperature control equipment guided by superintelligent design, capable of both heating and cooling. Uses fiberglass as an additional heat carrier, requiring no exhaust vent. Service life of up to 70 years.</description>
     <thingClass>LSTC.Building_TC</thingClass>
 
