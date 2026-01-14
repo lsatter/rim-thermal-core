@@ -67,15 +67,15 @@
     <modExtensions>
         <li Class="LSTC.Building_TC_ModExt">
             <!-- 高功率进入阈值 -->
-            <HighPowerEnterDelta>5</HighPowerEnterDelta>
+            <HighPowerEnterDelta>5.0</HighPowerEnterDelta>
             <!-- 高功率退出阈值 -->
-            <HighPowerExitDelta>0.5</HighPowerExitDelta>
-            <!-- 最大线性调控温差 -->
+            <HighPowerExitDelta>1.0</HighPowerExitDelta>
+            <!-- 最大调控温度 -->
             <MaxEffectiveDelta>30</MaxEffectiveDelta>
-            <!-- 线性倍数 -->
-            <ChangeRate>0.5</ChangeRate>
             <!-- 最小调控温度 -->
-            <MinTempChange>1</MinTempChange>
+            <MinEffectiveDelta>0.5</MinEffectiveDelta>
+            <!-- 线性倍数 -->
+            <EffectiveRate>0.5</EffectiveRate>
         </li>
     </modExtensions>
 
