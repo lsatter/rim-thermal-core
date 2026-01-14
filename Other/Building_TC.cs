@@ -4,7 +4,7 @@ using Verse;
 
 namespace LSTC
 {
-    public class Building_TC_ModExt: DefModExtension
+    public class Building_TC_ModExt : DefModExtension
     {
         public static readonly Building_TC_ModExt Default = new Building_TC_ModExt();
 
@@ -12,12 +12,12 @@ namespace LSTC
         public float HighPowerEnterDelta = 10f;
         // 高功率退出阈值
         public float HighPowerExitDelta = 1f;
-        // 最大线性调控温差
+        // 最大调控温差
         public float MaxEffectiveDelta = 40f;
+        // 最小调控温差
+        public float MinEffectiveDelta = 0.5f;
         // 线性倍数
-        public float ChangeRate = 0.5f;
-        // 最小调控温度
-        public float MinTempChange = 1f;
+        public float EffectiveRate = 0.5f;
     }
 
     public class Building_TC : Building_TempControl
@@ -60,22 +60,11 @@ namespace LSTC
                 return;
 
             // 执行调温行为
-            float tempChange;
-
-            if (dt < ext.HighPowerEnterDelta)
-            {
-                tempChange = ext.MinTempChange;
-            }
-            else if (dt < ext.MaxEffectiveDelta)
-            {
-                tempChange = dt * ext.ChangeRate;
-            }
-            else
-            {
-                tempChange = ext.MaxEffectiveDelta * ext.ChangeRate;
-            }
-
+            float tempChange = dt * ext.EffectiveRate;
+            if (tempChange > ext.MaxEffectiveDelta) tempChange = ext.MaxEffectiveDelta;
+            else if (tempChange < ext.MinEffectiveDelta) tempChange = ext.MinEffectiveDelta;
             tempChange *= sign;
+
             this.GetRoom(RegionType.Set_All).Temperature += tempChange;
         }
     }
